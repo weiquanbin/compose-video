@@ -1,14 +1,9 @@
-import org.jetbrains.dokka.gradle.DokkaMultiModuleTask
-
-apply(from = "${rootDir}/publish.gradle")
-apply(from = "${rootDir}/scripts/publish-root.gradle")
-apply(from = "${rootDir}/scripts/publish-module.gradle")
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("me.tylerbwong.gradle.metalava") version "0.3.2"
     id("org.jetbrains.dokka")
+    id("maven-publish")
 }
 
 metalava {
@@ -17,7 +12,7 @@ metalava {
 }
 
 android {
-    namespace = "io.sanghun.compose.video"
+    namespace = "weiquanbin.compose.video"
     compileSdk = 33
 
     defaultConfig {
@@ -35,7 +30,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -51,10 +49,19 @@ android {
 }
 
 afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                groupId = "compose-video"
+                version = "1.2.1"
+                artifactId = "weiquanbin"
+            }
+        }
+    }
     tasks.named("dokkaHtmlPartial") {
-
     }
 }
+
 
 dependencies {
     implementation(libs.androidx.core)
