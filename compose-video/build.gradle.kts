@@ -53,7 +53,7 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 groupId = "compose-video"
-                version = "1.2.2"
+                version = "1.2.0"
                 artifactId = "weiquanbin"
             }
         }
