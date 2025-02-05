@@ -5,12 +5,11 @@ plugins {
 
 android {
     namespace = "io.sanghun.compose.video.sample"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "io.sanghun.compose.video.sample"
-        minSdk = 23
-        targetSdk = 32
+        minSdk = 26
         versionCode = 1
         versionName = "1.0"
 

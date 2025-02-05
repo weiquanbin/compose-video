@@ -13,11 +13,10 @@ metalava {
 
 android {
     namespace = "weiquanbin.compose.video"
-    compileSdk = 33
+    compileSdk = 35
 
     defaultConfig {
-        minSdk = 23
-        targetSdk = 32
+        minSdk = 26
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -37,11 +36,12 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
+
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
@@ -53,7 +53,7 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 groupId = "compose-video"
-                version = "1.2.1"
+                version = "1.2.2"
                 artifactId = "weiquanbin"
             }
         }
